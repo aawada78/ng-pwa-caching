@@ -1,0 +1,27 @@
+<h1>Booking History</h1>
+
+<div>
+  <label>
+    City
+        <input [(ngModel)]="city"/>
+  </label>
+  <button (click)="search()">Search</button>
+</div>
+<app-tabbed-pane>
+    <app-tab [title]="'Upcoming Voyages'">
+      @for(trip of trips(); track city){
+        <p>{{ trip.from }} - {{ trip.to }}</p>
+      } 
+      @empty {
+        <p>No upcoming voyages!</p>
+      }
+    </app-tab>
+  
+        <app-tab [title]="'Operated Voyages'">
+          <p>No operated voyages!</p>
+        </app-tab>
+  
+    <app-tab [title]="'Cancelled Voyages'">
+      <p>No cancelled voyages!</p>
+    </app-tab>
+</app-tabbed-pane>
